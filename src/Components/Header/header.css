@@ -1,11 +1,6 @@
 /* FONTS */
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat&display=swap');
 
-/* GLOBALS */
-.text-uppercase {
-   text-transform: uppercase;
-}
-
 /* HEADER */
 #container-header-site {
    height: 500px;
@@ -15,7 +10,6 @@
    color: #fff;
    display: flex;
    justify-content: center;
-   
 }
 
 #header-site {
@@ -41,11 +35,7 @@
    font-family: 'Kaushan Script', cursive;
 }
 
-#menu-site {
-   display: none;
-}
-
-#menu-site-ham, #welcome-message-ntmy, #more-info-btn {
+#menu-site, #menu-site-ham, #welcome-message-ntmy, #more-info-btn {
    font-family: 'Montserrat', sans-serif;
 }
 
@@ -58,6 +48,10 @@
 
 #menu-site-ham {
    padding: .6em;
+}
+
+#menu-site-ham:hover {
+   cursor: pointer;
 }
 
 #container-welcome-message {
@@ -87,6 +81,51 @@
    padding: 1em 1.75em;
    font-size: 1.25em;
    font-weight: bold;
+}
+
+/* SITE HAMBURGER MENU FUNCTIONALITY */
+
+.drop-down-default, .drop-down-menu-open, .drop-down-menu-closed {
+   width: 100px;
+   height: 50vh;
+   top: 0px;
+   background: blue;
+   position: absolute;
+   top: 40px;
+   z-index: -1;
+}
+
+.drop-down-default {
+    display: none;
+}
+
+.drop-down-menu-open {
+    animation: openMenu .5s forwards linear;
+    z-index: 1;
+}
+
+.drop-down-menu-closed {
+    animation: closeMenu .5s forwards linear;
+    display: none;
+    z-index: 2;
+}
+
+@keyframes closeMenu {
+    from {
+        height: 100px;
+    }
+    to {
+        height: 0vh;
+    }
+}
+
+@keyframes openMenu {
+    from {
+        height: 0vh;
+    }
+    to {
+        height: 100px;
+    }
 }
 
 /* MEDIA QUERIES */
@@ -140,8 +179,11 @@
       display: none;
    }
    #menu-site {
+      background: transparent;
       font-family: 'Montserrat', sans-serif;
       display: flex;
+      position: relative;
+      top: 0px;
    }
    #menu-site li {
       margin-left: 30px;
